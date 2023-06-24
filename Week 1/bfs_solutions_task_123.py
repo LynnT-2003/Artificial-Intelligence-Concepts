@@ -69,16 +69,18 @@ def bfs(s):
     return s # return goal state where s is goal
 
 def print_path(s, v):  # s is the initial state, v is the current state
+    global count
     if v == s:
         print(s.p)
     elif v.parent is None:
         print("no path found")
     else:
         print_path(s,v.parent)
-        print(v.p)
+        print(f"Move {v.g}: ", v.p)
 
 count = 0
 initial = state(p)
 v = bfs(initial)
-print(v.g, count)      # prints the number of moves and total number of states generated
+print(f"{v.g} moves, {count} states stored")
+print("Initial:", end=" ")   # prints the number of moves and total number of states generated
 print_path(initial, v)
